@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity { String[]
         return true;
     }
 
-    public boolean onOptionsItemSelection(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.about) {
             startActivity(new Intent(this,AboutActivity.class));
         }else if (item.getItemId()==R.id.setting) {

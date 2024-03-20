@@ -1,30 +1,41 @@
 package com.example.listview;
 
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import android.widget.ListView;
-import  android.widget.ArrayAdapter;
 
-import com.example.listview.R;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
 
 public class MainActivity extends AppCompatActivity { String[]
-        lisSArray={"bakso", "nasgor", "mieayam", "gorengan", "nasipadang"};
+        listArray={"asus", "motorola", "apple", "toshiba"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_listview, lisSArray);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.activity_listview, listArray);
         ListView listView = (ListView) findViewById(R.id.array_list);
         listView.setAdapter(adapter);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.optionmenu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelection(MenuItem item) {
+        if (item.getItemId()==R.id.about) {
+            startActivity(new Intent(this,AboutActivity.class));
+        }else if (item.getItemId()==R.id.setting) {
+            startActivity(new Intent(this,SettingActivity.class));
+        } else if (item.getItemId()==R.id.help) {
+            startActivity(new Intent(this,HelpActivity.class));
+        } return true;
+
     }
 }

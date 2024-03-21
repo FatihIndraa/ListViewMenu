@@ -1,7 +1,6 @@
 package com.example.listview;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,6 +35,5 @@ public class MainActivity extends AppCompatActivity { String[]
         } else if (item.getItemId()==R.id.help) {
             startActivity(new Intent(this,HelpActivity.class));
         } return true;
-
     }
 }
